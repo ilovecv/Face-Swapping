@@ -1,0 +1,36 @@
+\begin{thebibliography}{1}\itemsep=-1pt
+
+\bibitem{afifi2014video}
+M.~Afifi, K.~F. Hussain, H.~M. Ibrahim, and N.~M. Omar.
+\newblock Video face replacement system using a modified poisson blending
+  technique.
+\newblock In {\em Intelligent Signal Processing and Communication Systems
+  (ISPACS), 2014 International Symposium on}, pages 205--210. IEEE, 2014.
+
+\bibitem{cheng20093d}
+Y.-T. Cheng, V.~Tzeng, Y.~Liang, C.-C. Wang, B.-Y. Chen, Y.-Y. Chuang, and
+  M.~Ouhyoung.
+\newblock 3d-model-based face replacement in video.
+\newblock In {\em SIGGRAPH'09: Posters}, page~29. ACM, 2009.
+
+\bibitem{dale2011video}
+K.~Dale, K.~Sunkavalli, M.~K. Johnson, D.~Vlasic, W.~Matusik, and H.~Pfister.
+\newblock Video face replacement.
+\newblock {\em ACM Transactions on Graphics (TOG)}, 30(6):130, 2011.
+
+\bibitem{liang2009image}
+Y.~Liang, B.-Y. Chen, Y.-Y. Chuang, and M.~Ouhyoung.
+\newblock Image based face replacement in video.
+
+\bibitem{min2010automatic}
+F.~Min, N.~Sang, and Z.~Wang.
+\newblock Automatic face replacement in video based on 2d morphable model.
+\newblock In {\em Pattern Recognition (ICPR), 2010 20th International
+  Conference on}, pages 2250--2253. IEEE, 2010.
+
+\bibitem{niswar2012face}
+A.~Niswar, E.~P. Ong, and Z.~Huang.
+\newblock Face replacement in video from a single image.
+\newblock In {\em SIGGRAPH Asia 2012 Posters}, page~12. ACM, 2012.
+
+\end{thebibliography}
