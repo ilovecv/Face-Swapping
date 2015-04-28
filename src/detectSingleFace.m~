@@ -18,10 +18,12 @@ function area = detectSingleFace(im)
     bs = clipboxes(im, bs);
     bs = nms_face(bs,0.3);
     
-    %show results
     figure;
     showboxes(im, bs(1),posemap),title('Highest scoring detection');
-
+    plot(bs.xy(:,1),bs.xy(:,2),'g.','markersize',15);
+    figure;
+    %show results
+    %figure,showboxes(im, bs(1),posemap),title('Highest scoring detection');
     bs = bs(1);
     points = zeros(size(bs.xy,1),2);
     for i = 1 : size(bs.xy,1)
@@ -30,12 +32,5 @@ function area = detectSingleFace(im)
         points(i,:) = [x y];
     end
     K = convhull(points);
-    area = points(K,:);
-    
-    plot(area(:,1),area(:,2),'g.','markersize',15);
-    
-    area = roipoly(im,area(:,1),area(:,2));
-    
-    figure;
-    imshow(area);
+    area = bs.xy(K,:);
 end
