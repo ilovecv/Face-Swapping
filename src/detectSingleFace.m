@@ -1,4 +1,4 @@
-function area = detectSingleFace(im)
+function [area, points] = detectSingleFace(im)
     load face_p146_small.mat;
     % 5 levels for each octave
     model.interval = 5;
