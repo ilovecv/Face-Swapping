@@ -29,6 +29,7 @@ function area = detectSingleFace(im)
         y = (bs.xy(i,2) + bs.xy(i,4))/2;
         points(i,:) = [x y];
     end
+    points
     K = convhull(points);
     area = points(K,:);
     
