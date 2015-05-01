@@ -5,27 +5,27 @@ addpath('./max_flow');
 addpath('./face_plusplus');
 addpath('./TPS');
 
-srcImgFile = '../data/4.jpg';
-dstImgFile = '../data/6.jpg';
+srcImgFile = '../data/test/3.jpg';
+dstImgFile = '../data/test/8.jpg';
 
 %read image
-<<<<<<< HEAD
-im = imread('../data/3_resize.jpg');
+im = imread('../data/test/3.jpg');
 %show image
 imagesc(im); axis image; axis off; drawnow;
-=======
 im_src = imread(srcImgFile);
+%read image
+im_dst = imread(dstImgFile);
+im_src = imresize(im_src, [size(im_dst, 1), size(im_dst, 2)]);
+imresize_src_name = 'temp_resize_src.jpg';
+imwrite(im_src, imresize_src_name);
 
->>>>>>> 0b493e10bf548a081747e236d689102a4cfff2b8
 %detect face
 %[point_src] = detectSingleFace(im_src);
-[point_src] = detectSingleFacePlusPlus(srcImgFile);
+[point_src] = detectSingleFacePlusPlus(imresize_src_name);
 %get mask
 point_src_M = point_src(convhull(point_src),:);        
 mask_src = roipoly(im_src,point_src_M(:,1),point_src_M(:,2));
 
-%read image
-im_dst = imread(dstImgFile);
 %detect face
 %[point_dst] = detectSingleFace(im_dst);
 [point_dst] = detectSingleFacePlusPlus(dstImgFile);
