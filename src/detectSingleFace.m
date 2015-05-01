@@ -1,4 +1,4 @@
-function area = detectSingleFace(im)
+function [points] = detectSingleFace(im)
     load face_p146_small.mat;
     % 5 levels for each octave
     model.interval = 5;
@@ -19,8 +19,8 @@ function area = detectSingleFace(im)
     bs = nms_face(bs,0.3);
     
     %show results
-    figure;
-    showboxes(im, bs(1),posemap),title('Highest scoring detection');
+    %figure;
+    %showboxes(im, bs(1),posemap),title('Highest scoring detection');
 
     bs = bs(1);
     points = zeros(size(bs.xy,1),2);
@@ -29,14 +29,13 @@ function area = detectSingleFace(im)
         y = (bs.xy(i,2) + bs.xy(i,4))/2;
         points(i,:) = [x y];
     end
+<<<<<<< HEAD
     points
     K = convhull(points);
     area = points(K,:);
+=======
+>>>>>>> 0b493e10bf548a081747e236d689102a4cfff2b8
     
-    plot(area(:,1),area(:,2),'g.','markersize',15);
-    
-    area = roipoly(im,area(:,1),area(:,2));
-    
-    figure;
-    imshow(area);
+    %figure;
+    %imshow(area);
 end
