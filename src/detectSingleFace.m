@@ -1,4 +1,4 @@
-function [area, points] = detectSingleFace(im)
+function [points] = detectSingleFace(im)
     load face_p146_small.mat;
     % 5 levels for each octave
     model.interval = 5;
@@ -29,12 +29,6 @@ function [area, points] = detectSingleFace(im)
         y = (bs.xy(i,2) + bs.xy(i,4))/2;
         points(i,:) = [x y];
     end
-    K = convhull(points);
-    area = points(K,:);
-    
-    %plot(area(:,1),area(:,2),'g.','markersize',15);
-    
-    area = roipoly(im,area(:,1),area(:,2));
     
     %figure;
     %imshow(area);

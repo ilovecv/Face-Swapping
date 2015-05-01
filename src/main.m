@@ -2,22 +2,29 @@ clear;
 %Compile code for face FIRST!
 addpath('./face_detection');
 addpath('./max_flow');
-%read image
-im_src = imread('../data/4.jpg');
-%detect face
-[mask_src,point_src] = detectSingleFace(im_src);
+addpath('./face_plusplus');
 
-%{
-hold on;
-imagesc(im_src); axis image; axis off; drawnow;
-plot(point_src(:,1),point_src(:,2),'g.','markersize',15);
-hold off;
-%}
+srcImgFile = '../data/4.jpg';
+dstImgFile = '../data/5.jpg';
 
 %read image
-im_dst = imread('../data/5.jpg');
+im_src = imread(srcImgFile);
+
 %detect face
-[mask_dst,point_dst] = detectSingleFace(im_dst);
+%[point_src] = detectSingleFace(im_src);
+[point_src] = detectSingleFacePlusPlus(srcImgFile);
+%get mask
+point_src_M = point_src(convhull(point_src),:);        
+mask_src = roipoly(im_src,point_src_M(:,1),point_src_M(:,2));
+
+%read image
+im_dst = imread(dstImgFile);
+%detect face
+%[point_dst] = detectSingleFace(im_dst);
+[point_dst] = detectSingleFacePlusPlus(dstImgFile);
+%get mask
+point_dst_M = point_dst(convhull(point_dst),:);        
+mask_dst = roipoly(im_dst,point_dst_M(:,1),point_dst_M(:,2));
 
 %get transform matrix
 tform = fitgeotrans(point_src,point_dst,'nonreflectivesimilarity');
@@ -29,10 +36,10 @@ clear im_src
 
 [~,labels] = optimalSeamSearch(im_src_wrap, im_dst, mask_dst, mask_src); 
 
-imagesc(labels);
-
 R = uint8(im_src_wrap).*repmat(uint8(labels),[1,1,3]) + uint8(im_dst).*repmat(uint8(1-labels), [1 1 3]);
 imshow(R)
+
+
 %{
 figure;
 hold on;
