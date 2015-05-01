@@ -19,8 +19,8 @@ function [area, points] = detectSingleFace(im)
     bs = nms_face(bs,0.3);
     
     %show results
-    figure;
-    showboxes(im, bs(1),posemap),title('Highest scoring detection');
+    %figure;
+    %showboxes(im, bs(1),posemap),title('Highest scoring detection');
 
     bs = bs(1);
     points = zeros(size(bs.xy,1),2);
@@ -32,10 +32,10 @@ function [area, points] = detectSingleFace(im)
     K = convhull(points);
     area = points(K,:);
     
-    plot(area(:,1),area(:,2),'g.','markersize',15);
+    %plot(area(:,1),area(:,2),'g.','markersize',15);
     
     area = roipoly(im,area(:,1),area(:,2));
     
-    figure;
-    imshow(area);
+    %figure;
+    %imshow(area);
 end
