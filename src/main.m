@@ -3,9 +3,10 @@ clear;
 addpath('./face_detection');
 addpath('./max_flow');
 addpath('./face_plusplus');
+addpath('./TPS');
 
 srcImgFile = '../data/4.jpg';
-dstImgFile = '../data/5.jpg';
+dstImgFile = '../data/6.jpg';
 
 %read image
 im_src = imread(srcImgFile);
@@ -26,13 +27,15 @@ im_dst = imread(dstImgFile);
 point_dst_M = point_dst(convhull(point_dst),:);        
 mask_dst = roipoly(im_dst,point_dst_M(:,1),point_dst_M(:,2));
 
+%{
 %get transform matrix
 tform = fitgeotrans(point_src,point_dst,'nonreflectivesimilarity');
 %transform src image to align with dst image
 im_src_wrap = imwarp(im_src,tform,'OutputView',imref2d(size(im_dst)));
+%}
 
-%save some space
-clear im_src
+im_src_wrap = morph_tps_wrapper(uint8(im_src), uint8(im_dst), point_src, point_dst,1,0,1);
+
 
 [~,labels] = optimalSeamSearch(im_src_wrap, im_dst, mask_dst, mask_src); 
 
@@ -43,7 +46,7 @@ imshow(R)
 %{
 figure;
 hold on;
-imagesc(im_dst); axis image; axis off; drawnow;
+imagesc(im_dst); axis image; axis off; drawnow; 1, 0
 plot(point_dst(:,1),point_dst(:,2),'g.','markersize',15);
 hold off;
 
