@@ -5,7 +5,7 @@ addpath('./max_flow');
 addpath('./face_plusplus');
 addpath('./TPS');
 
-srcImgFile = '../data/test/4.jpg';
+srcImgFile = '../data/test/3.jpg';
 dstImgFile = '../data/test/5.jpg';
 
 %read image
@@ -39,12 +39,14 @@ mask_dst_warp = mask_dst;
 
 %Morph the src image
 [im_src_warp, im_dst_warp, mask_src_warp, mask_dst_warp] = morph_tps_wrapper(uint8(im_src), uint8(im_dst), point_src, point_dst,1,0,1, mask_src, mask_dst);
-
+mask_dst_warp = mask_dst_warp(:,:,1);
+mask_src_warp = mask_src_warp(:,:,1);
 %Find optimal seam
 [~,labels] = optimalSeamSearch(im_src_warp, im_dst_warp, mask_dst_warp, mask_src_warp);
 
 %blending
 R = PoissonBlending(im_src_warp,im_dst_warp, labels);
+figure
 imshow(uint8(R))
 %R = uint8(im_src_warp).*repmat(uint8(labels),[1,1,3]) + uint8(im_dst).*repmat(uint8(1-labels), [1 1 3]);
 
