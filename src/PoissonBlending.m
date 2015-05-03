@@ -1,25 +1,28 @@
-
-TargImPasteR = double(TargIm(:, :, 1));
-TargImPasteG = double(TargIm(:, :, 2));
-TargImPasteB = double(TargIm(:, :, 3));
+function[result] = PoissonBlending(im_src,im_dst, mask)
+im_dst_lapr = double(im_dst(:, :, 1));
+im_dst_lapg = double(im_dst(:, :, 2));
+im_dst_lapb = double(im_dst(:, :, 3));
 
 %Calulating divergance of Guiding vectors: div((Gx,Gy))=Laplacian(G)
 h = [0 -1 0; -1 4 -1; 0 -1 0];
-LaplacianSource = imfilter(double(SourceIm), h, 'replicate');
+LaplacianSource = imfilter(double(im_src), h, 'replicate');
 VR = LaplacianSource(:, :, 1);
 VG = LaplacianSource(:, :, 2);
 VB = LaplacianSource(:, :, 3);
 
 %Place div guidance vector into Target image
-TargImPasteR(logical(MaskTarg(:))) = VR(SourceMask(:));
-TargImPasteG(logical(MaskTarg(:))) = VG(SourceMask(:));
-TargImPasteB(logical(MaskTarg(:))) = VB(SourceMask(:));
-
-TargImPaste = cat(3, TargImPasteR, TargImPasteG, TargImPasteB);
+im_dst_lapr(logical(mask(:))) = VR(logical(mask(:)));
+im_dst_lapg(logical(mask(:))) = VG(logical(mask(:)));
+im_dst_lapb(logical(mask(:))) = VB(logical(mask(:)));
 
 
-%% paste Laplacian of source into Target image
-[MaskTarg, TargImPaste] = paste_source_into_targ(SourceIm, TargIm, SourceMask, shift_in_target_image);
+AdjacencyMat = calcAdjancency( mask );
+im_dst_boundary  = bwboundaries( mask, 8);
 
-%% Solve POisson equations in target image wihtihn masked area
-TargFilled = PoissonColorImEditor(TargImPaste, MaskTarg);
+im_dst_fillr = PoissonGrayImEditor(im_dst_lapr, mask, AdjacencyMat, im_dst_boundary);
+im_dst_fillg = PoissonGrayImEditor(im_dst_lapg, mask, AdjacencyMat, im_dst_boundary);
+im_dst_fillb = PoissonGrayImEditor(im_dst_lapb, mask, AdjacencyMat, im_dst_boundary);
+
+result = cat(3, im_dst_fillr, im_dst_fillg, im_dst_fillb);
+
+end

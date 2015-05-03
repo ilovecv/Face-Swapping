@@ -3,9 +3,9 @@ function [im1_warp, im2_warp, mask_src, mask_dst] = morph_tps_wrapper(im1, im2, 
 % with thin-plate-spline method by building the TPS model.
 
 assert(size(im1_pts, 1) == size(im2_pts, 1), 'Control points in two images should be the same amount!');
-   
+
 if nargin < 7
-   verbose = false; 
+   verbose = false;
 end
 
 % Check whether the number of control points in both images the same
@@ -20,7 +20,7 @@ if nr1 == nr2 && nc1 == nc2
     im1_pad = im1;
     im2_pad = im2;
 else
-    nr = max(nr1, nr2); 
+    nr = max(nr1, nr2);
     nc = max(nc1, nc2);
     im1_pad = padarray(im1, [nr-nr1, nc-nc1], 'replicate', 'post');
     im2_pad = padarray(im2, [nr-nr2, nc-nc2], 'replicate', 'post');

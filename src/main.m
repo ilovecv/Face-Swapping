@@ -5,8 +5,8 @@ addpath('./max_flow');
 addpath('./face_plusplus');
 addpath('./TPS');
 
-srcImgFile = '../data/4.jpg';
-dstImgFile = '../data/5.jpg';
+srcImgFile = '../data/test/4.jpg';
+dstImgFile = '../data/test/5.jpg';
 
 %read image
 im_src = imread(srcImgFile);
@@ -41,9 +41,11 @@ im_src_wrap = imwarp(im_src,tform,'OutputView',imref2d(size(im_dst)));
 [~,labels] = optimalSeamSearch(im_src_wrap, im_dst, mask_dst, mask_src);
 
 %blending
-R = uint8(im_src_wrap).*repmat(uint8(labels),[1,1,3]) + uint8(im_dst).*repmat(uint8(1-labels), [1 1 3]);
-
+R = PoissonBlending(im_src_wrap,im_dst, label);
 imshow(R)
+%R = uint8(im_src_wrap).*repmat(uint8(labels),[1,1,3]) + uint8(im_dst).*repmat(uint8(1-labels), [1 1 3]);
+
+%imshow(R)
 
 
 %{
