@@ -29,9 +29,10 @@ mask_dst = roipoly(im_dst,point_dst_M(:,1),point_dst_M(:,2));
 
 %{
 %get transform matrix
-tform = fitgeotrans(point_src,point_dst,'nonreflectivesimilarity');
+tform = fitgeotrans(point_src,point_dst,'affine');
 %transform src image to align with dst image
 im_src_warp = imwarp(im_src,tform,'OutputView',imref2d(size(im_dst)));
+im_dst_warp = im_dst;
 mask_src_warp = imwarp(mask_src,tform,'OutputView',imref2d(size(im_dst)));
 mask_dst_warp = mask_dst;
 %}
@@ -40,7 +41,7 @@ mask_dst_warp = mask_dst;
 [im_src_warp, im_dst_warp, mask_src_warp, mask_dst_warp] = morph_tps_wrapper(uint8(im_src), uint8(im_dst), point_src, point_dst,1,0,1, mask_src, mask_dst);
 
 %Find optimal seam
-[~,labels] = optimalSeamSearch(im_src_warp, im_dst_warp, mask_dst_warp, mask_src);
+[~,labels] = optimalSeamSearch(im_src_warp, im_dst_warp, mask_dst_warp, mask_src_warp);
 
 %blending
 R = PoissonBlending(im_src_warp,im_dst_warp, labels);
