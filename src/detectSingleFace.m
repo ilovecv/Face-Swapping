@@ -29,6 +29,12 @@ function [points] = detectSingleFace(im)
         y = (bs.xy(i,2) + bs.xy(i,4))/2;
         points(i,:) = [x y];
     end
+<<<<<<< HEAD
+    points
+    K = convhull(points);
+    area = points(K,:);
+=======
+>>>>>>> 0b493e10bf548a081747e236d689102a4cfff2b8
     
     %figure;
     %imshow(area);

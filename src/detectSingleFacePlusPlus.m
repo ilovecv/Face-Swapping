@@ -1,8 +1,8 @@
-function [points] = detectSingleFacePlusPlus(img)
+function [points, check] = detectSingleFacePlusPlus(img)
     API_KEY = '4c233c47107187c32e42424be7b2bd08';
     API_SECRET = 'Wd2wzmlrCsHu1DTI7R4MDx8tucFR-lUs';
 
-
+    check = 1;
     api = facepp(API_KEY, API_SECRET, 'US');
 
     % Detect faces in the image, obtain related information (faces, img_id, img_height, 
@@ -17,6 +17,11 @@ function [points] = detectSingleFacePlusPlus(img)
     imshow(im);
     hold on;
     %}
+    if(length(face) ~= 1)
+        points = [];
+        check = 0;
+        return;
+    end
     for i = 1 : length(face)
         % Draw face rectangle on the image
         face_i = face{i};

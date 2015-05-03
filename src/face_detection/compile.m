@@ -8,9 +8,9 @@ mex -Dchar16_t=UINT16_T -O features.cc
 % If you are using a Windows machine, please use 3. 
 
 % 1) multithreaded convolution using blas
- mex -Dchar16_t=UINT16_T -O fconvblas.cc -lmwblas -o fconv
+% mex -O fconvblas.cc -lmwblas -o fconv
 % 2) mulththreaded convolution without blas
-% mex -Dchar16_t=UINT16_T -O fconvMT.cc -o fconv
+mex -Dchar16_t=UINT16_T -O fconvMT.cc -o fconv
 % 3) basic convolution, very compatible
 % mex -O fconv.cc
 
