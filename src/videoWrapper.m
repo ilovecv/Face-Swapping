@@ -34,7 +34,7 @@ point_src_M = point_src(convhull(point_src),:);
 mask_src = roipoly(im_src,point_src_M(:,1),point_src_M(:,2));
 
 nFrames = video.NumberOfFrames;
-for i = 1201 : 1540
+for i = 1 : 300
     
     disp(datestr(now));
     sprintf('Frame %d in the video', i)

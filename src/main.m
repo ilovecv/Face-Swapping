@@ -5,15 +5,19 @@ addpath('./max_flow');
 addpath('./face_plusplus');
 addpath('./TPS');
 
-srcImgFile = '../data/test/3.jpg';
+srcImgFile = '../data/test/7.jpg';
 dstImgFile = '../data/test/5.jpg';
 
 %read image
 im_src = imread(srcImgFile);
+im_dst = imread(dstImgFile);
+im_src = imresize(im_src, [size(im_dst, 1), size(im_dst, 2)]);
+imresize_src_name = 'temp_resize_src.jpg';
+imwrite(im_src, imresize_src_name);
 
 %detect face
 %[point_src] = detectSingleFace(im_src);
-[point_src] = detectSingleFacePlusPlus(srcImgFile);
+[point_src] = detectSingleFacePlusPlus(imresize_src_name);
 %get mask
 point_src_M = point_src(convhull(point_src),:);
 mask_src = roipoly(im_src,point_src_M(:,1),point_src_M(:,2));
@@ -43,11 +47,16 @@ mask_dst_warp = mask_dst_warp(:,:,1);
 mask_src_warp = mask_src_warp(:,:,1);
 %Find optimal seam
 [~,labels] = optimalSeamSearch(im_src_warp, im_dst_warp, mask_dst_warp, mask_src_warp);
+innerR = uint8(im_src_warp).*repmat(uint8(labels),[1,1,3]);
+innerOri = uint8(im_dst_warp).*repmat(uint8(labels), [1 1 3]);
+innerR = changeLumination(innerOri, innerR);
 
 %blending
+%im_src_warp = innerR + uint8(im_src_warp).*repmat(uint8(1 - labels),[1,1,3]);
 R = PoissonBlending(im_src_warp,im_dst_warp, labels);
-figure
-imshow(uint8(R))
+%figure
+%imshow(uint8(R))
+imwrite(uint8(R), 'aaaa.jpg')
 %R = uint8(im_src_warp).*repmat(uint8(labels),[1,1,3]) + uint8(im_dst).*repmat(uint8(1-labels), [1 1 3]);
 
 %imshow(R)

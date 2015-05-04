@@ -19,6 +19,8 @@ if nr1 == nr2 && nc1 == nc2
     nc = nc1;
     im1_pad = im1;
     im2_pad = im2;
+    mask_src_pad = mask_src;
+    mask_dst_pad = mask_dst;
 else
     nr = max(nr1, nr2);
     nc = max(nc1, nc2);
