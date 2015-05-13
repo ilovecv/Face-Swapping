@@ -41,10 +41,10 @@ function [flow, labels] = optimalSeamSearch(im_src_warp, im_dst_warp, mask_dst, 
     M_src = mask_inner;
     %{
     figure;
+    subplot(1,2,1)
     imshow(imfuse(uint8(im_dst_warp),mask_outer));
-    figure;
+    subplot(1,2,2)
     imshow(imfuse(uint8(im_dst_warp),mask_inner));
-    figure;
     %}
     pixel_num = size(im_dst_warp,1)*size(im_dst_warp,2);
 
@@ -218,6 +218,7 @@ function [flow, labels] = optimalSeamSearch(im_src_warp, im_dst_warp, mask_dst, 
     labels = reshape(labels,[M N]);
     %{
     bd = bwboundaries(labels);
+    subplot(1,2,1)
     imshow(imfuse(uint8(im_dst_warp), mask));
     hold on;
     for k = 1:1
@@ -225,5 +226,14 @@ function [flow, labels] = optimalSeamSearch(im_src_warp, im_dst_warp, mask_dst, 
         plot(boundary(:,2), boundary(:,1), 'r', 'LineWidth', 2);
     end
     hold off;
+    subplot(1,2,2)
+    imshow(mask);
+    hold on;
+    for k = 1:1
+        boundary = bd{k};
+        plot(boundary(:,2), boundary(:,1), 'r', 'LineWidth', 2);
+    end
+    hold off;
     %}
+    
 end

@@ -1,0 +1,15 @@
+\begin{thebibliography}{1}\itemsep=-1pt
+
+\bibitem{kwatra2003graphcut}
+V.~Kwatra, A.~Sch{\"o}dl, I.~Essa, G.~Turk, and A.~Bobick.
+\newblock Graphcut textures: image and video synthesis using graph cuts.
+\newblock In {\em ACM Transactions on Graphics (ToG)}, volume~22, pages
+  277--286. ACM, 2003.
+
+\bibitem{perez2003poisson}
+P.~P{\'e}rez, M.~Gangnet, and A.~Blake.
+\newblock Poisson image editing.
+\newblock In {\em ACM Transactions on Graphics (TOG)}, volume~22, pages
+  313--318. ACM, 2003.
+
+\end{thebibliography}

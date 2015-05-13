@@ -5,15 +5,21 @@ addpath('./max_flow');
 addpath('./face_plusplus');
 addpath('./TPS');
 
-srcImgFile = '../data/test/7.jpg';
-dstImgFile = '../data/test/5.jpg';
+srcImgFile = '../data/test/4.jpg';
+dstImgFile = '../data/test/7.jpg';
 
 %read image
 im_src = imread(srcImgFile);
 im_dst = imread(dstImgFile);
+subplot(1,3,1);
+imshow(im_src);
+subplot(1,3,2);
+imshow(im_dst);
+
 im_src = imresize(im_src, [size(im_dst, 1), size(im_dst, 2)]);
 imresize_src_name = 'temp_resize_src.jpg';
 imwrite(im_src, imresize_src_name);
+
 
 %detect face
 %[point_src] = detectSingleFace(im_src);
@@ -42,6 +48,7 @@ mask_dst_warp = mask_dst;
 %}
 
 %Morph the src image
+
 [im_src_warp, im_dst_warp, mask_src_warp, mask_dst_warp] = morph_tps_wrapper(uint8(im_src), uint8(im_dst), point_src, point_dst,1,0,1, mask_src, mask_dst);
 mask_dst_warp = mask_dst_warp(:,:,1);
 mask_src_warp = mask_src_warp(:,:,1);
@@ -53,13 +60,16 @@ innerR = changeLumination(innerOri, innerR);
 
 %blending
 %im_src_warp = innerR + uint8(im_src_warp).*repmat(uint8(1 - labels),[1,1,3]);
+subplot(1,3,3)
 R = PoissonBlending(im_src_warp,im_dst_warp, labels);
+imshow(uint8(R));
 %figure
 %imshow(uint8(R))
-imwrite(uint8(R), 'aaaa.jpg')
-%R = uint8(im_src_warp).*repmat(uint8(labels),[1,1,3]) + uint8(im_dst).*repmat(uint8(1-labels), [1 1 3]);
-
-%imshow(R)
+%{
+subplot(1,2,1)
+R = uint8(im_src_warp).*repmat(uint8(labels),[1,1,3]) + uint8(im_dst_warp).*repmat(uint8(1-labels), [1 1 3]);
+imshow(R)
+%}
 
 
 %{
