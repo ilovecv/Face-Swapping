@@ -3,47 +3,53 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: report.aux
 The style file: ieee.bst
 Database file #1: report.bib
+Repeated entry---line 177 of file report.bib
+ : @inproceedings{afifi2014video
+ :                              ,
+I'm skipping whatever remains of this entry
 Warning--can't use both volume and number fields in kwatra2003graphcut
+Warning--empty journal in liang2009image
+Warning--empty year in liang2009image
 Warning--can't use both volume and number fields in perez2003poisson
-You've used 2 entries,
+You've used 9 entries,
             2120 wiz_defined-function locations,
-            510 strings with 4061 characters,
-and the built_in function-call counts, 1107 in all, are:
-= -- 114
-> -- 46
-< -- 4
-+ -- 18
-- -- 16
-* -- 83
-:= -- 163
-add.period$ -- 8
-call.type$ -- 2
-change.case$ -- 14
+            551 strings with 5424 characters,
+and the built_in function-call counts, 4295 in all, are:
+= -- 423
+> -- 227
+< -- 9
++ -- 89
+- -- 80
+* -- 308
+:= -- 661
+add.period$ -- 32
+call.type$ -- 9
+change.case$ -- 67
 chr.to.int$ -- 0
-cite$ -- 4
-duplicate$ -- 46
-empty$ -- 83
-format.name$ -- 16
-if$ -- 247
+cite$ -- 13
+duplicate$ -- 176
+empty$ -- 311
+format.name$ -- 80
+if$ -- 942
 int.to.chr$ -- 0
-int.to.str$ -- 2
-missing$ -- 2
-newline$ -- 13
-num.names$ -- 4
-pop$ -- 16
+int.to.str$ -- 9
+missing$ -- 9
+newline$ -- 47
+num.names$ -- 18
+pop$ -- 88
 preamble$ -- 1
-purify$ -- 12
+purify$ -- 58
 quote$ -- 0
-skip$ -- 38
+skip$ -- 132
 stack$ -- 0
-substring$ -- 74
-swap$ -- 26
-text.length$ -- 4
+substring$ -- 230
+swap$ -- 76
+text.length$ -- 9
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 8
-warning$ -- 2
-while$ -- 10
-width$ -- 3
-write$ -- 28
-(There were 2 warnings)
+type$ -- 36
+warning$ -- 4
+while$ -- 36
+width$ -- 10
+write$ -- 105
+(There was 1 error message)

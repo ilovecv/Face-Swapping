@@ -5,8 +5,8 @@ addpath('./max_flow');
 addpath('./face_plusplus');
 addpath('./TPS');
 
-srcImgFile = '../data/test/4.jpg';
-dstImgFile = '../data/test/7.jpg';
+srcImgFile = '../data/test/7.jpg';
+dstImgFile = '../data/test/8.jpg';
 
 %read image
 im_src = imread(srcImgFile);

@@ -1,15 +1,55 @@
 \begin{thebibliography}{1}\itemsep=-1pt
 
+\bibitem{afifi2014video}
+M.~Afifi, K.~F. Hussain, H.~M. Ibrahim, and N.~M. Omar.
+\newblock Video face replacement system using a modified poisson blending
+  technique.
+\newblock In {\em Intelligent Signal Processing and Communication Systems
+  (ISPACS), 2014 International Symposium on}, pages 205--210. IEEE, 2014.
+
+\bibitem{cheng20093d}
+Y.-T. Cheng, V.~Tzeng, Y.~Liang, C.-C. Wang, B.-Y. Chen, Y.-Y. Chuang, and
+  M.~Ouhyoung.
+\newblock 3d-model-based face replacement in video.
+\newblock In {\em SIGGRAPH'09: Posters}, page~29. ACM, 2009.
+
+\bibitem{dale2011video}
+K.~Dale, K.~Sunkavalli, M.~K. Johnson, D.~Vlasic, W.~Matusik, and H.~Pfister.
+\newblock Video face replacement.
+\newblock {\em ACM Transactions on Graphics (TOG)}, 30(6):130, 2011.
+
 \bibitem{kwatra2003graphcut}
 V.~Kwatra, A.~Sch{\"o}dl, I.~Essa, G.~Turk, and A.~Bobick.
 \newblock Graphcut textures: image and video synthesis using graph cuts.
 \newblock In {\em ACM Transactions on Graphics (ToG)}, volume~22, pages
   277--286. ACM, 2003.
 
+\bibitem{liang2009image}
+Y.~Liang, B.-Y. Chen, Y.-Y. Chuang, and M.~Ouhyoung.
+\newblock Image based face replacement in video.
+
+\bibitem{min2010automatic}
+F.~Min, N.~Sang, and Z.~Wang.
+\newblock Automatic face replacement in video based on 2d morphable model.
+\newblock In {\em Pattern Recognition (ICPR), 2010 20th International
+  Conference on}, pages 2250--2253. IEEE, 2010.
+
+\bibitem{niswar2012face}
+A.~Niswar, E.~P. Ong, and Z.~Huang.
+\newblock Face replacement in video from a single image.
+\newblock In {\em SIGGRAPH Asia 2012 Posters}, page~12, 2012.
+
 \bibitem{perez2003poisson}
 P.~P{\'e}rez, M.~Gangnet, and A.~Blake.
 \newblock Poisson image editing.
 \newblock In {\em ACM Transactions on Graphics (TOG)}, volume~22, pages
   313--318. ACM, 2003.
+
+\bibitem{zhou2013extensive}
+E.~Zhou, H.~Fan, Z.~Cao, Y.~Jiang, and Q.~Yin.
+\newblock Extensive facial landmark localization with coarse-to-fine
+  convolutional network cascade.
+\newblock In {\em Computer Vision Workshops (ICCVW), 2013 IEEE International
+  Conference on}, pages 386--391. IEEE, 2013.
 
 \end{thebibliography}
